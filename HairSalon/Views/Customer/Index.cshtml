@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Restaurant.Models;
+@model List<Restaurant.Models.Eatery>;
+
+<h2>Eateries list:</h2>
+
+@if (@Model.Count == 0)
+{
+  <h3>No eateries have been added yet!</h3>
+} 
+
+<ul>
+  @foreach(Eatery eatery in Model)
+  {
+    <li>@Html.ActionLink($"{eatery.EateryName}", "Details", new { id = eatery.EateryId }) | @eatery.Cuisine.CuisineType</li>
+  }
+</ul>
+<hr />
+
+<p>@Html.ActionLink("Add an eatery", "Create")</p>
+<p>@Html.ActionLink("Return to Homepage", "Index", "Home")</p>
+
+<!-- The ActionLink() method is called on @Html. It takes two required parameters as well as an optional third parameter.
+The first parameter "Return to Homepage" is the display text for the link. In other words, a user will see a link that says "Return to Homepage".
+The second parameter "Index" is the target action in the controller. Gonna look for the .cshtml file called "Index"
+The third parameter "home" is optional, and it specifies the controller that we want to route to. More specifically, our third parameter is the name of the controller without Controller appended to it. Since we've included this third parameter, this ActionLink will take us to the Index() route method in the HomeController. Otherwise it would match the view-- since we are in Eateroes it would take us to Eateries controller -->
