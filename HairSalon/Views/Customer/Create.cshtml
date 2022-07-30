@@ -2,28 +2,22 @@
   Layout = "_Layout";
 }
 
-@model Restaurant.Models.Eatery;
-@using Restaurant.Models;
-<!-- model directive tells our view what type of data will be passed into the view from the controller route. namespace.Models.class -->
-@if (@Model.Cuisine == null)
-{
-  <p>No cuisine types have been added yet!</p>
-} 
+@model HairSalon.Models.Customer;
 
-<h4>Add a new Eatery</h4>
- 
+<h3>Add Customer</h3>
+
 @using (Html.BeginForm()) 
-
 {
-  @Html.LabelFor(model => model.EateryName)
-  @Html.TextBoxFor(model => model.EateryName)
+  <input type="hidden" id="StylistId" name="StylistId" value="@ViewBag.StylistId"/>
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  @Html.Label("Set Appt. Date: ")
 
-  @Html.LabelFor(model => model.Cuisine)
-  @Html.DropDownList("CuisineId")
-  <!-- give DropDownList() the string name of a ViewBag property of the type SelectList. Since we saved our SelectList as ViewBag.CategoryId, we give DropDownList() the string "CategoryId". This helper method will create an html dropdown select list out of the SelectList object.  -->
-
-  <input type="submit" value="Add new Eatery"/>
+  <input type="submit" value="Enter"/>
 }
-<p>@Html.ActionLink("Show all Eateries", "Index")</p>
 
-<!-- Note - CategoryId may seem like a bad name for a SelectList object, but the reason we chose that name is because that will be the name attribute on the <select> tag created. You can check this in your browser DevTools Inspector and see <select id="CategoryId" name="CategoryId">. We could use a different name like ViewBag.CategoryList and you'd get <select id="CategoryList" name="CategoryList">. The problem with that is when we submit our form it will use the name attribute to know what property of the Item object to assign a value, so it will try to create an Item with a CategoryList property, which will not work. -->
+<div class="big-button">
+  <p>@Html.ActionLink("Back To Homepage", "Index", "Home")</p>
+  <p>@Html.ActionLink("Back To Stylists", "Index", "Stylists")</p>
+</div>
+

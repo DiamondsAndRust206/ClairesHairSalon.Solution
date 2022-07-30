@@ -17,6 +17,26 @@ namespace HairSalon.Controllers
       _db = db; // database object
     }
 
+    public ActionResult Index()
+    {
+      List<Stylist> model = _db.Stylists.ToList();
+      ViewBag.PageTitle = "Stylists";
+      return View(model);
+    }
+
+    public ActionResult Create()
+    {
+      ViewBag.PageTitle = "Add Stylist";
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Stylist stylist)
+    {
+      _db.Stylists.Add(stylist);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
     
   }
 }
