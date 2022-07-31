@@ -29,8 +29,8 @@ This webpage was programmed using C#, ASP.NET & Entity. It is a hair salon that 
 *  Open Terminal and navigate to the file HairSalon and type "dotnet restore".
 * Type "dotnet build" : this will help you to have all the technologies you need to run you test.
 * In the HairSalon directory create a file named "appsettings.json"
-```
 * Add the following code to the newly created .json file
+```
 {
   "ConnectionStrings": {
       "DefaultConnection": "Server=localhost;Port=3306;database=hair_salon;uid=root;pwd=[YOUR-PASSWORD];"
