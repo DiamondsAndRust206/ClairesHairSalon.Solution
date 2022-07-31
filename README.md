@@ -26,15 +26,17 @@ This webpage was programmed using C#, ASP.NET & Entity. It is a hair salon that 
 * Clone the repository using the copied URL and the "git clone" command
 * In the shell program, navigate to the root directory of the newly created file called "HairSalon.Solution"
 * From the root directory, navigate to the directory named "HairSalon"
-*  Open Terminal and navigate to the type HairSalon and type "dotnet restore".
+*  Open Terminal and navigate to the file HairSalon and type "dotnet restore".
 * Type "dotnet build" : this will help you to have all the technologies you need to run you test.
 * In the HairSalon directory create a file named "appsettings.json"
+```
 * Add the following code to the newly created .json file
 {
   "ConnectionStrings": {
       "DefaultConnection": "Server=localhost;Port=3306;database=hair_salon;uid=root;pwd=[YOUR-PASSWORD];"
   }
 }
+```
 * Before commit and pushing to your remote repo make sure to add the "appsettings.json" file to your .gitignore file because it contains sensitive information.
 * Open Your MySql workbench and navigate to Administrator
 * Select DataImport /Restore
