@@ -46,7 +46,7 @@ namespace HairSalon.Controllers
       ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
       return View(thisCust);
     }
-    
+
     [HttpPost]
     public ActionResult Edit(Customer customer)
     {
@@ -54,6 +54,23 @@ namespace HairSalon.Controllers
       _db.SaveChanges();
       // redirect to stylists details after customer is created
       return RedirectToAction("Details", "Stylist", new { id = customer.StylistId});
+    }
+
+    public ActionResult Delete(int id)
+    {
+      ViewBag.PageTitle = "Delete Customer";
+      var thisCust = _db.Customers.FirstOrDefault(customer => customer.CustomerId == id);
+      return View(thisCust);
+    }
+    
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisCust = _db.Customers.FirstOrDefault(customer => customer.CustomerId == id);
+      _db.Customers.Remove(thisCust);
+      _db.SaveChanges();
+      // redirect to stylists details after customer is created
+      return RedirectToAction("Details", "Stylist", new { id = thisCust.StylistId});
     }
 
   }
